@@ -16,26 +16,38 @@ def buttonHandler(value):
             ans += int(display.cget("text"))
             curr = value
             clear()
-         else:
+        else:
             if curr == "+":
                 ans += int(display.cget("text"))
-                curr="+"
                 clear()
-            elif value == "-":
+            elif curr == "-":
                 ans -= int(display.cget("text"))
-                curr="-"
                 clear()
-            elif value == "x":
+            elif curr == "x":
                 ans *= int(display.cget("text"))
-                curr = "x"
                 clear()
-            elif value == "/":
+            elif curr == "/":
                 ans /= int(display.cget("text"))
-                curr = "/"
                 clear()
+            curr = value
     elif value == "=":
+        if curr == "+":
+            ans += int(display.cget("text"))
+            clear()
+        elif curr == "-":
+            ans -= int(display.cget("text"))
+            clear()
+        elif curr == "x":
+            ans *= int(display.cget("text"))
+            clear()
+        elif curr == "/":
+            ans /= int(display.cget("text"))
+            clear()
+        curr = ""
         display.config(text=str(ans))
     elif value == "C":
+        curr = ""
+        ans = 0
         clear()
     else:
         display.config(text=display.cget("text") + str(value))
