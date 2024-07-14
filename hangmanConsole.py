@@ -132,11 +132,13 @@ while True:
         if guessString == ans:
             print("YOU WIN! The word was ",ans)
             win+=1
+            break
         elif currState >= 7:
             print("You lost...")
             print("The word was ",ans)
             lose+=1
-        print(f"Times won: {win}   Times lost: {lose}")
-        if input("Do you want to play again? (y/n)") != "y":
-            print("Thanks for playing!")
-            exit()
+            break
+    print(f"Times won: {win}   Times lost: {lose}")
+    if input("Do you want to play again? (y/n)") != "y":
+        print("Thanks for playing!")
+        exit()
