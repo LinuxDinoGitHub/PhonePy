@@ -25,6 +25,7 @@ def resetButton():
     global btn
     for i in buttonText:
         btn[i] = Button(buttonFrame, text=str(i), font=('Arial',38), command=lambda x=i : buttonHandler(x), bg='white')
+    print(btn.items())
     buttonFrame.pack()
 def buttonHandler(value):
     global ans, curr, btn, last, buttonFrame
@@ -32,17 +33,17 @@ def buttonHandler(value):
         clear()
         last=False
     if value in ["+","-","x","/"]:
-        resetButton()
-        btn[value] = Button(buttonFrame, text=str(i), font=('Arial',38), command=lambda x=i : buttonHandler(x), bg='red')
-        buttonFrame.pack()
+        btn[value].config(bg='red')
         if curr not in ["+","-","x","/"]:
             ans += int(display.cget("text"))
             curr = value
             last = True
         else:
+            btn[curr].config(bg='white')
             checkoperator(curr)
             curr = value
     elif value == "=":
+        btn[curr].config(bg='white')
         checkoperator(curr)
         curr = ""
         display.config(text=str(ans))
